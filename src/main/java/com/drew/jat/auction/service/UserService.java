@@ -74,4 +74,12 @@ public class UserService {
 		
 		return findOneWithBlogs(user.getId());
 	}
+
+//	@PreAuthorize("#user.name != authentication.name")
+//	public void delete(@P("user") User user) 
+	
+	
+	public void delete(int id) {
+		userRepository.delete(id);		
+	}
 }
