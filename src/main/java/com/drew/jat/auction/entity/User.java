@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+import com.drew.jat.auction.annotations.UniqueUsername;
+
 @Entity
 public class User {
 
@@ -23,6 +25,7 @@ public class User {
 
 	@Size(min = 3, message = "At least 3 characters expected")
 	@Column(unique = true)
+	@UniqueUsername(message = "Such usename already exists!")
 	private String name;
 
 	@Email(message = "Email address expected")

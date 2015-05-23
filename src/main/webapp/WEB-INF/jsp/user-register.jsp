@@ -50,7 +50,16 @@ $(document).ready(function() {
 			rules: {
 				name: {
 					required : true,
-					minlength : 3
+					minlength : 3,
+					remote : {
+						url: "<spring:url value = '/register/available.html' />",
+						type: "get",
+						data: {
+							username: function() {
+								return $("#name").val();
+							}
+						}
+					}
 				},
 				email: {
 					required : true,
@@ -71,6 +80,9 @@ $(document).ready(function() {
 			},
 			unhighlight: function(element) {
 				$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+			},
+			messages: {
+				name: "Such user alredy exists!"
 			}
 
 		}
